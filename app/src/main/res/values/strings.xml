@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Quotify</string>
+    <string name="opendrawer">Open</string>
+    <string name="closedrawer">Close</string>
+
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="saved_quotes">Saved Quotes</string>
+    <string name="setting">Setting</string>
+
+</resources>
