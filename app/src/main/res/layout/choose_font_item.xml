@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/fontStyleTV"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="Aa"
+        android:background="@drawable/circle_shape_background"
+        android:backgroundTint="@android:color/white"
+        android:alpha="0.8"
+        android:textAlignment="center"
+        android:fontFamily="@font/solway_family"
+        android:paddingTop="6dp"
+        android:textSize="20sp"
+        android:layout_margin="8dp"/>
+
+
+</LinearLayout>

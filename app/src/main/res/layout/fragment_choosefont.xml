@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_font"
+        android:fontFamily="@font/alatsi_family"
+        android:layout_margin="10dp"
+        android:textSize="@dimen/bootsheet_text_size"
+        android:textColor="@android:color/black"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/alatsiTxt"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:text="Aa"
+            android:background="@drawable/circle_shape_background"
+            android:backgroundTint="@android:color/white"
+            android:alpha="0.8"
+            android:textAlignment="center"
+            android:fontFamily="@font/alatsi_family"
+            android:paddingTop="6dp"
+            android:textSize="20sp"
+            android:layout_margin="8dp"/>
+
+        <TextView
+            android:id="@+id/calistogaTxt"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:text="Aa"
+            android:background="@drawable/circle_shape_background"
+            android:backgroundTint="@android:color/white"
+            android:alpha="0.8"
+            android:textAlignment="center"
+            android:fontFamily="@font/calistoga_family"
+            android:paddingTop="6dp"
+            android:textSize="20sp"
+            android:layout_margin="8dp"/>
+
+        <TextView
+            android:id="@+id/solwayTxt"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:text="Aa"
+            android:background="@drawable/circle_shape_background"
+            android:backgroundTint="@android:color/white"
+            android:alpha="0.8"
+            android:textAlignment="center"
+            android:fontFamily="@font/solway_family"
+            android:paddingTop="6dp"
+            android:textSize="20sp"
+            android:layout_margin="8dp"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text Size"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"
+            android:layout_marginLeft="8dp"
+            android:textColor="@android:color/black"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/regularTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textSize="24sp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"/>
+
+            <TextView
+                android:id="@+id/mediumTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textSize="28sp"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/largeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textColor="@android:color/black"
+                android:textSize="32sp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"/>
+
+        </LinearLayout>
+
+
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,14 +1,12 @@
 package non.shahad.quotify
 
-import android.app.SearchManager
-import android.content.Context
+
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -24,6 +22,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
         modifyActionbar()
         setUpNavigationController()
@@ -130,6 +129,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         menuItem.isChecked = true
         drawerlayout.closeDrawer(GravityCompat.START)
         navController.navigate(resId)
+    }
+
+    override fun onBackPressed() {
+
+        if(drawerlayout.isDrawerOpen(GravityCompat.START)){
+            drawerlayout.closeDrawers()
+        }else super.onBackPressed()
+
     }
 
 

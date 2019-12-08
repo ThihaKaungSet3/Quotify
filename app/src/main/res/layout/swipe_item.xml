@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/rootview"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_corner"
+    android:elevation="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="25dp"
+    android:layout_marginTop="30dp">
+
+
+    <TextView
+        android:id="@+id/quote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="‘ I often think that the night is more alive and more richly colored than the day ‘"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/solway_family"
+        android:minLines="2"
+        android:maxLines="5"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:text="Vincent Vangoh"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/calistoga_family"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quote" />
+
+    <View
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/circle_shape_background"
+        android:backgroundTint="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/author"
+        app:layout_constraintTop_toBottomOf="@+id/quote" />
+
+    <View
+        android:id="@+id/changecolorview"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/change_background_shape"
+        android:elevation="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/changefontBtn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="16dp"
+        android:alpha="0.8"
+        android:background="@drawable/circle_shape_background"
+        android:backgroundTint="@android:color/white"
+        android:elevation="15dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_font"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/changecolorview" />
+
+    <ImageButton
+        android:id="@+id/sharebtn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:alpha="0.8"
+        android:background="@drawable/circle_shape_background"
+        android:backgroundTint="@android:color/white"
+        android:elevation="15dp"
+        android:paddingRight="3dp"
+        android:src="@drawable/ic_share"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

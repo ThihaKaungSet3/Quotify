@@ -7,5 +7,6 @@
     <string name="explore">Explore</string>
     <string name="saved_quotes">Saved Quotes</string>
     <string name="setting">Setting</string>
-
+    <string name="choose_background">Choose Background</string>
+    <string name="choose_font">Choose Font</string>
 </resources>

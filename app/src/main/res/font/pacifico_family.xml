@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <font
-        android:font="@font/pirou"
+        android:font="@font/pacifico"
         android:fontStyle="normal"
-        app:font="@font/pirou"/>
+        app:font="@font/pacifico"/>
 
 </font-family>

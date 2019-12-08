@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="toolbar_text_size">30sp</dimen>
+    <dimen name="toolbar_text_size">25sp</dimen>
+    <dimen name="bootsheet_text_size">24sp</dimen>
+    <dimen name="author_text_size">24sp</dimen>
+    <dimen name="regular_quote_size"></dimen>
 </resources>
