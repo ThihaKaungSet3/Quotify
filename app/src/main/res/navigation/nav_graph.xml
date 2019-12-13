@@ -8,22 +8,22 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="non.shahad.quotify.home.HomeFragment"
+        android:name="non.shahad.quotify.ui.home.HomeFragment"
         android:label="Home Fragment"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/savedQuotesFragment"
-        android:name="non.shahad.quotify.bookmark.SavedQuotesFragment"
+        android:name="non.shahad.quotify.ui.bookmark.SavedQuotesFragment"
         android:label="fragment_saved_quotes"
         tools:layout="@layout/fragment_saved_quotes" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="non.shahad.quotify.setting.SettingFragment"
+        android:name="non.shahad.quotify.ui.setting.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="non.shahad.quotify.explore.ExploreFragment"
+        android:name="non.shahad.quotify.ui.explore.ExploreFragment"
         android:label="fragment_explore"
         tools:layout="@layout/fragment_explore" />
 

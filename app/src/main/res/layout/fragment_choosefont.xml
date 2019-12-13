@@ -37,6 +37,7 @@
             android:backgroundTint="@android:color/white"
             android:alpha="0.8"
             android:textAlignment="center"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:fontFamily="@font/alatsi_family"
             android:paddingTop="6dp"
             android:textSize="20sp"
@@ -50,6 +51,7 @@
             android:background="@drawable/circle_shape_background"
             android:backgroundTint="@android:color/white"
             android:alpha="0.8"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:textAlignment="center"
             android:fontFamily="@font/calistoga_family"
             android:paddingTop="6dp"
@@ -63,6 +65,8 @@
             android:text="Aa"
             android:background="@drawable/circle_shape_background"
             android:backgroundTint="@android:color/white"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
             android:alpha="0.8"
             android:textAlignment="center"
             android:fontFamily="@font/solway_family"
@@ -106,7 +110,7 @@
                 android:text="A"
                 android:textSize="24sp"
                 android:layout_gravity="center"
-                android:layout_marginRight="8dp"/>
+                android:layout_marginRight="12dp"/>
 
             <TextView
                 android:id="@+id/mediumTxt"
@@ -125,7 +129,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="32sp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="12dp"/>
 
         </LinearLayout>
 

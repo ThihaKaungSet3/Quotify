@@ -14,7 +14,6 @@
         android:backgroundTint="@android:color/white"
         android:alpha="0.8"
         android:textAlignment="center"
-        android:fontFamily="@font/solway_family"
         android:paddingTop="6dp"
         android:textSize="20sp"
         android:layout_margin="8dp"/>
