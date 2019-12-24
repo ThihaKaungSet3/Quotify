@@ -1,6 +1,6 @@
 package non.shahad.quotify.callbacks
 
-import non.shahad.quotify.data.entities.ColorEntity
+import non.shahad.quotify.data.local.entities.ColorEntity
 import non.shahad.quotify.ui.bottomsheets.choosefont.FontFamily
 import non.shahad.quotify.ui.bottomsheets.choosefont.FontSize
 

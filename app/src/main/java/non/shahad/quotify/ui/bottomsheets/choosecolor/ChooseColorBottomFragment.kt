@@ -2,8 +2,6 @@ package non.shahad.quotify.ui.bottomsheets.choosecolor
 
 import android.app.Dialog
 import android.os.Bundle
-import android.os.Parcelable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,11 +13,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_choosecolor.*
 import non.shahad.quotify.R
 import non.shahad.quotify.callbacks.BottomSheetItemChooseListener
-import non.shahad.quotify.data.entities.ColorEntity
+import non.shahad.quotify.data.local.entities.ColorEntity
 import non.shahad.quotify.ui.bottomsheets.choosefont.FontFamily
 import non.shahad.quotify.ui.bottomsheets.choosefont.FontSize
 import non.shahad.quotify.utils.Constants
 import non.shahad.quotify.utils.SharedPreferencesHelper
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class ChooseColorBottomFragment : BottomSheetDialogFragment(),BottomSheetItemChooseListener {
 
@@ -32,7 +31,7 @@ class ChooseColorBottomFragment : BottomSheetDialogFragment(),BottomSheetItemCho
             ChooseColorBottomFragment()
     }
 
-    private lateinit var viewmodel : ChooseColorViewModel
+    private val viewmodel by viewModel<ChooseColorViewModel>()
     private val sharedPrefHelper : SharedPreferencesHelper by lazy { SharedPreferencesHelper.getInstance(context!!) }
     private val layoutManager : LinearLayoutManager by lazy { LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false) }
 
@@ -40,11 +39,6 @@ class ChooseColorBottomFragment : BottomSheetDialogFragment(),BottomSheetItemCho
         ChooseColorAdapter(
             this
         )
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewmodel = ViewModelProviders.of(this).get(ChooseColorViewModel::class.java)
     }
 
     override fun getTheme(): Int = R.style.BottomSheetDialogTheme

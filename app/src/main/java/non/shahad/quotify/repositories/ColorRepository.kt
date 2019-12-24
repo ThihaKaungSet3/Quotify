@@ -1,15 +1,13 @@
 package non.shahad.quotify.repositories
 
-import android.app.Application
 import androidx.lifecycle.LiveData
-import non.shahad.quotify.data.database.AppDatabase
-import non.shahad.quotify.data.entities.ColorEntity
+import non.shahad.quotify.data.local.database.AppDatabase
+import non.shahad.quotify.data.local.entities.ColorEntity
 
 /**
  * Repository to fetch stored Color value from local db
  */
-class ColorRepository(application: Application) {
-    private val database : AppDatabase = AppDatabase.getInstance(application)
+class ColorRepository constructor(val database: AppDatabase) {
 
     fun getAllBackgroundColor() : LiveData<List<ColorEntity>>{
         return database.colorDao().getAllBackgroundColors()

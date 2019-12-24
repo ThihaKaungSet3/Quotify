@@ -1,4 +1,4 @@
-package non.shahad.quotify.data.entities
+package non.shahad.quotify.data.local.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

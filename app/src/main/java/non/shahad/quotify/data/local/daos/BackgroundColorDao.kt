@@ -1,11 +1,11 @@
-package non.shahad.quotify.data.daos
+package non.shahad.quotify.data.local.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import non.shahad.quotify.data.entities.ColorEntity
+import non.shahad.quotify.data.local.entities.ColorEntity
 
 @Dao
 interface BackgroundColorDao {

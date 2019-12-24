@@ -9,21 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.swipe_item.view.*
 import non.shahad.quotify.R
 import non.shahad.quotify.callbacks.ItemFromCardOnClickListener
-import non.shahad.quotify.data.entities.ColorEntity
-import non.shahad.quotify.datamodels.Quote
+import non.shahad.quotify.data.local.entities.ColorEntity
+import non.shahad.quotify.datamodels.models
 import non.shahad.quotify.ui.bottomsheets.choosefont.FontFamily
 import non.shahad.quotify.ui.bottomsheets.choosefont.FontSize
 import non.shahad.quotify.utils.ColorTool
 import non.shahad.quotify.utils.FontCache
 
 class SwipeCardAdapter(
-    private var quotesList : List<Quote>  = emptyList(),
     private val itemClick : ItemFromCardOnClickListener
 ) : RecyclerView.Adapter<SwipeCardAdapter.SwipeCardViewHolder>(), View.OnClickListener{
 
     private lateinit var selectedColor : ColorEntity
     private lateinit var fontFamily: FontFamily
     private lateinit var fontSize: FontSize
+    private var quotesList: List<models.Quotes> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SwipeCardViewHolder {
 
@@ -58,8 +58,9 @@ class SwipeCardAdapter(
     }
 
 
-    fun setQuotesList(quotesList: List<Quote>){
+    fun setQuotesList(quotesList: List<models.Quotes>){
         this.quotesList = quotesList
+        notifyDataSetChanged()
     }
 
 
@@ -68,8 +69,8 @@ class SwipeCardAdapter(
 
     class SwipeCardViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(quote: Quote,colorEntity: ColorEntity,fontFamily: FontFamily,fontSize: FontSize){
-            itemView.quote.text = quote.title
+        fun bind(quote:models.Quotes,colorEntity: ColorEntity,fontFamily: FontFamily,fontSize: FontSize){
+            itemView.quote.text = quote.quote
             itemView.author.text = quote.author
             changeColorViewBackground(ColorTool.gradientState(colorEntity.startColor,colorEntity.endColor,
                 ColorTool.OVAL,0f))

@@ -1,9 +1,9 @@
 package non.shahad.quotify.ui
 
-
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -14,18 +14,26 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import non.shahad.quotify.R
+import non.shahad.quotify.data.remote.EndPoint
+import non.shahad.quotify.utils.SharedPreferencesHelper
 import non.shahad.quotify.utils.toast
+import org.koin.android.ext.android.get
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var drawerToggle : ActionBarDrawerToggle
     private lateinit var navController: NavController
 
+    private lateinit var sharedPrefHelper : SharedPreferencesHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContentView(R.layout.activity_main)
 //        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
+        sharedPrefHelper = get<SharedPreferencesHelper>()
+        Log.d("xD","$sharedPrefHelper")
         modifyActionbar()
         setUpNavigationController()
         initNavDrawer()

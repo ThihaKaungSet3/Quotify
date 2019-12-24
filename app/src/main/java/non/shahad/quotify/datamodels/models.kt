@@ -1,11 +1,14 @@
 package non.shahad.quotify.datamodels
 
+import com.google.gson.annotations.SerializedName
+
 object models {
-    data class QODResponse(var status: String,var quotes : List<Quotes>)
+    data class QODResponse(
+        @SerializedName("status")var status: String,
+        @SerializedName("quotes")var quotes : List                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <Quotes>
+    )
 
     data class Quotes(
-        var quotes : String?,
-        var author : String?,
-        var tag :  List<String>?,
-        var imgUrl : String? = "")
+        @SerializedName("quote")var quote : String?,
+        @SerializedName("author")var author : String?)
 }

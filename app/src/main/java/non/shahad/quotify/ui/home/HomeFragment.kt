@@ -9,20 +9,32 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.yuyakaido.android.cardstackview.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import non.shahad.quotify.R
 import non.shahad.quotify.ui.base.BaseFragment
 import non.shahad.quotify.ui.bottomsheets.choosecolor.ChooseColorBottomFragment
 import non.shahad.quotify.ui.bottomsheets.choosefont.ChooseFontBottomFragment
 import non.shahad.quotify.callbacks.BottomSheetItemChooseListener
-import non.shahad.quotify.data.entities.ColorEntity
+import non.shahad.quotify.data.local.database.AppDatabase
+import non.shahad.quotify.data.local.entities.ColorEntity
+import non.shahad.quotify.data.remote.EndPoint
+import non.shahad.quotify.data.remote.QuotesAPI
 import non.shahad.quotify.datamodels.Quote
+import non.shahad.quotify.repositories.QuotesRepository
 import non.shahad.quotify.ui.bottomsheets.choosefont.FontFamily
 import non.shahad.quotify.ui.bottomsheets.choosefont.FontSize
 import non.shahad.quotify.utils.Constants
 import non.shahad.quotify.utils.SharedPreferencesHelper
+import org.koin.android.ext.android.get
+import org.koin.android.viewmodel.ext.android.viewModel
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class HomeFragment : BaseFragment(),BottomSheetItemChooseListener  {
@@ -33,17 +45,12 @@ class HomeFragment : BaseFragment(),BottomSheetItemChooseListener  {
     }
 
 
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel: HomeViewModel by viewModel<HomeViewModel>()
     private val manager : CardStackLayoutManager by lazy {CardStackLayoutManager(context,this)}
-    private val sharedPrefsHelper : SharedPreferencesHelper by lazy { SharedPreferencesHelper.getInstance(context!!) }
-    private val swipeAdapter : SwipeCardAdapter by lazy { SwipeCardAdapter(createQuotes(),this)}
+    private val sharedPrefsHelper : SharedPreferencesHelper by lazy { get<SharedPreferencesHelper>() }
+    private val swipeAdapter : SwipeCardAdapter by lazy { SwipeCardAdapter(this)}
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,35 +63,38 @@ class HomeFragment : BaseFragment(),BottomSheetItemChooseListener  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("ColorSelect","${FontFamily.valueOf(sharedPrefsHelper.fontFamily())} ")
+
+        viewModel.result.observe(this, Observer {
+            swipeAdapter.setQuotesList(quotesList = it.quotes)
+        })
 
         addNecessaryStateToAdapter()
         getSelectedDrawblefromDb()
         initiateSwipeCard()
-//        viewModel.getQOD().observe(this, Observer {
-//            Log.d("Responce","$it")
-//        })
     }
 
     private fun addNecessaryStateToAdapter (){
         swipeAdapter.setFontFamily(FontFamily.valueOf(sharedPrefsHelper.fontFamily()))
         swipeAdapter.setFontSize(FontSize.valueOf(sharedPrefsHelper.fontSize()))
+
     }
 
 
     private fun initiateSwipeCard (){
 
-        manager.setStackFrom(StackFrom.None)
-        manager.setVisibleCount(2)
-        manager.setTranslationInterval(8.0f)
-        manager.setScaleInterval(0.95f)
-        manager.setSwipeThreshold(0.3f)
-        manager.setMaxDegree(20.0f)
-        manager.setDirections(Direction.HORIZONTAL)
-        manager.setCanScrollHorizontal(true)
-        manager.setCanScrollVertical(true)
-        manager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
-        manager.setOverlayInterpolator(LinearInterpolator())
+        with(manager){
+            setStackFrom(StackFrom.None)
+            setVisibleCount(2)
+            setTranslationInterval(8.0f)
+            setScaleInterval(0.95f)
+            setSwipeThreshold(0.3f)
+            setMaxDegree(20.0f)
+            setDirections(Direction.HORIZONTAL)
+            setCanScrollHorizontal(true)
+            setCanScrollVertical(true)
+            setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
+            setOverlayInterpolator(LinearInterpolator())
+        }
 
         cardStackView.layoutManager = manager
 

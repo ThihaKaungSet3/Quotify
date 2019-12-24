@@ -1,17 +1,16 @@
 package non.shahad.quotify.ui.bottomsheets.choosecolor
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import non.shahad.quotify.data.database.AppDatabase
-import non.shahad.quotify.data.entities.ColorEntity
+import androidx.lifecycle.ViewModel
+import non.shahad.quotify.data.local.entities.ColorEntity
 import non.shahad.quotify.repositories.ColorRepository
 
-class ChooseColorViewModel (application: Application) : AndroidViewModel(application){
+class ChooseColorViewModel
+constructor( val colorRepository: ColorRepository
+            ) : ViewModel(){
 
     private val colorList = MediatorLiveData<List<ColorEntity>>()
-    private val colorRepo : ColorRepository = ColorRepository(application)
 
     init {
         getAllColor()
@@ -22,7 +21,7 @@ class ChooseColorViewModel (application: Application) : AndroidViewModel(applica
     }
 
     private fun getAllColor(){
-        colorList.addSource(colorRepo.getAllBackgroundColor()){color ->
+        colorList.addSource(colorRepository.getAllBackgroundColor()){color ->
             colorList.postValue(color)
         }
     }

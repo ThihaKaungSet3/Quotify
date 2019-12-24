@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.choose_color_item.view.*
 import non.shahad.quotify.R
 import non.shahad.quotify.callbacks.BottomSheetItemChooseListener
-import non.shahad.quotify.data.entities.ColorEntity
+import non.shahad.quotify.data.local.entities.ColorEntity
 import non.shahad.quotify.utils.ColorTool
 import non.shahad.quotify.utils.ColorTool.Companion.gradientState
 

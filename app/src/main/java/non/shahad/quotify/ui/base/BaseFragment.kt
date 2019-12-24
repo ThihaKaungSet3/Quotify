@@ -4,9 +4,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.yuyakaido.android.cardstackview.Direction
-import non.shahad.quotify.callbacks.BottomSheetItemChooseListener
 import non.shahad.quotify.callbacks.ItemFromCardOnClickListener
-import non.shahad.quotify.data.entities.ColorEntity
 
 abstract class BaseFragment : Fragment(), ItemFromCardOnClickListener {
 
