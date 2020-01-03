@@ -13,7 +13,10 @@ interface BackgroundColorDao {
     fun getAllBackgroundColors() : LiveData<List<ColorEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(colorEntity: ColorEntity)
+    fun insert(colorEntity : ColorEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(colorList: List<ColorEntity>)
 
     @Query("SELECT * FROM background_color WHERE id = :id")
     fun findColorById(id : Long) : LiveData<ColorEntity>

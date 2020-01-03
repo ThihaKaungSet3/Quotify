@@ -6,21 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_choosecolor.*
 import non.shahad.quotify.R
 import non.shahad.quotify.callbacks.BottomSheetItemChooseListener
+import non.shahad.quotify.dagger.Injectable
 import non.shahad.quotify.data.local.entities.ColorEntity
 import non.shahad.quotify.ui.bottomsheets.choosefont.FontFamily
 import non.shahad.quotify.ui.bottomsheets.choosefont.FontSize
 import non.shahad.quotify.utils.Constants
+import non.shahad.quotify.custom.DaggerBottomSheetDialogFragment
 import non.shahad.quotify.utils.SharedPreferencesHelper
-import org.koin.android.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
-class ChooseColorBottomFragment : BottomSheetDialogFragment(),BottomSheetItemChooseListener {
+class ChooseColorBottomFragment : DaggerBottomSheetDialogFragment(),BottomSheetItemChooseListener,Injectable {
 
     companion object {
         /**
@@ -31,7 +33,10 @@ class ChooseColorBottomFragment : BottomSheetDialogFragment(),BottomSheetItemCho
             ChooseColorBottomFragment()
     }
 
-    private val viewmodel by viewModel<ChooseColorViewModel>()
+    @Inject
+    lateinit var viewmodelFactory: ViewModelProvider.Factory
+
+    private lateinit var viewmodel : ChooseColorViewModel
     private val sharedPrefHelper : SharedPreferencesHelper by lazy { SharedPreferencesHelper.getInstance(context!!) }
     private val layoutManager : LinearLayoutManager by lazy { LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false) }
 
@@ -50,6 +55,7 @@ class ChooseColorBottomFragment : BottomSheetDialogFragment(),BottomSheetItemCho
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewmodel = ViewModelProviders.of(this,viewmodelFactory).get(ChooseColorViewModel::class.java)
         return inflater.inflate(R.layout.fragment_choosecolor,container,false)
     }
 

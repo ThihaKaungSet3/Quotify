@@ -5,9 +5,10 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import non.shahad.quotify.data.local.entities.ColorEntity
 import non.shahad.quotify.repositories.ColorRepository
+import javax.inject.Inject
 
-class ChooseColorViewModel
-constructor( val colorRepository: ColorRepository
+class ChooseColorViewModel @Inject constructor(
+    val colorRepository: ColorRepository
             ) : ViewModel(){
 
     private val colorList = MediatorLiveData<List<ColorEntity>>()

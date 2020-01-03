@@ -36,13 +36,16 @@ class SwipeCardAdapter(
 
     override fun onBindViewHolder(holder: SwipeCardViewHolder, position: Int) {
         val quote = quotesList[position]
+
         holder.bind(quote,selectedColor,fontFamily,fontSize)
 
-        holder.itemView.setOnClickListener(this)
-        holder.itemView.author.setOnClickListener(this)
-        holder.itemView.changecolorview.setOnClickListener(this)
-        holder.itemView.changefontBtn.setOnClickListener(this)
-        holder.itemView.sharebtn.setOnClickListener(this)
+        with(holder.itemView){
+            setOnClickListener(this@SwipeCardAdapter)
+            author.setOnClickListener(this@SwipeCardAdapter)
+            changecolorview.setOnClickListener(this@SwipeCardAdapter)
+            changefontBtn.setOnClickListener(this@SwipeCardAdapter)
+            sharebtn.setOnClickListener(this@SwipeCardAdapter)
+        }
     }
 
     fun setSelectedColor(selectedColor : ColorEntity){
@@ -62,10 +65,6 @@ class SwipeCardAdapter(
         this.quotesList = quotesList
         notifyDataSetChanged()
     }
-
-
-    fun quotesList() = this.quotesList
-
 
     class SwipeCardViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 

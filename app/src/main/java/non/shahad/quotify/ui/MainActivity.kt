@@ -12,28 +12,41 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import non.shahad.quotify.MyApplication
 import non.shahad.quotify.R
+import non.shahad.quotify.data.local.daos.BackgroundColorDao
+import non.shahad.quotify.data.remote.BrainyAPI
 import non.shahad.quotify.data.remote.EndPoint
 import non.shahad.quotify.utils.SharedPreferencesHelper
 import non.shahad.quotify.utils.toast
 import org.koin.android.ext.android.get
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : DaggerAppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, HasAndroidInjector{
 
     private lateinit var drawerToggle : ActionBarDrawerToggle
     private lateinit var navController: NavController
 
     private lateinit var sharedPrefHelper : SharedPreferencesHelper
+    @Inject
+    lateinit var  dispatchingAndroidInjector : DispatchingAndroidInjector<Any>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         setContentView(R.layout.activity_main)
+        AndroidInjection.inject(this)
+        Log.d("Injected","${dispatchingAndroidInjector}")
 //        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
-        sharedPrefHelper = get<SharedPreferencesHelper>()
-        Log.d("xD","$sharedPrefHelper")
+
+
         modifyActionbar()
         setUpNavigationController()
         initNavDrawer()
@@ -158,7 +171,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-
+    override fun androidInjector(): AndroidInjector<Any> {
+        return dispatchingAndroidInjector
+    }
 
 
 }

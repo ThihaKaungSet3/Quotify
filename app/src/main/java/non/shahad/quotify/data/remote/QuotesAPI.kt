@@ -1,7 +1,6 @@
 package non.shahad.quotify.data.remote
 
 import non.shahad.quotify.datamodels.models
-import retrofit2.Call
 import retrofit2.http.GET
 
 interface QuotesAPI {

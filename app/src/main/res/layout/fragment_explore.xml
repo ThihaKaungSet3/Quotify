@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.explore.ExploreFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/exploreRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Explore" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

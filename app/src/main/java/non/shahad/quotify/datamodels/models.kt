@@ -9,6 +9,15 @@ object models {
     )
 
     data class Quotes(
-        @SerializedName("quote")var quote : String?,
-        @SerializedName("author")var author : String?)
+        var quote : String?,
+        var author : String?,
+        var tags : List<String>?)
+
+    data class Topics(
+        var name : String?,
+        var resource : String? = ""
+    )
+
+
+
 }

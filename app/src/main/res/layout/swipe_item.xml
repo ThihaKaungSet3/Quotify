@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/rootview"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,11 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:fontFamily="@font/solway_family"
+        android:maxLines="6"
+        android:minLines="2"
         android:text="‘ I often think that the night is more alive and more richly colored than the day ‘"
         android:textColor="@android:color/white"
-        android:fontFamily="@font/solway_family"
-        android:minLines="2"
-        android:maxLines="5"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,11 +38,11 @@
         android:id="@+id/author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:fontFamily="@font/calistoga_family"
         android:text="Vincent Vangoh"
         android:textColor="@android:color/black"
-        android:fontFamily="@font/calistoga_family"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quote" />

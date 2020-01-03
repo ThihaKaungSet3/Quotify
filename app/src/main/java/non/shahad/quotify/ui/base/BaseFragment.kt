@@ -4,9 +4,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.yuyakaido.android.cardstackview.Direction
+import dagger.android.support.DaggerFragment
 import non.shahad.quotify.callbacks.ItemFromCardOnClickListener
 
-abstract class BaseFragment : Fragment(), ItemFromCardOnClickListener {
+abstract class BaseFragment : DaggerFragment(), ItemFromCardOnClickListener {
 
 
     override fun onColorViewClick() {

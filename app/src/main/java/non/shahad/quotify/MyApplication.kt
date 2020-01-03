@@ -1,27 +1,25 @@
 package non.shahad.quotify
 
-import android.app.Application
-import non.shahad.quotify.di.networkModule
-import non.shahad.quotify.di.persistenceModule
-import non.shahad.quotify.di.repositoryModule
-import non.shahad.quotify.di.viewModelModule
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
+
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
+import non.shahad.quotify.dagger.components.DaggerApplicationComponent
 
 
-class MyApplication : Application(){
+class MyApplication : DaggerApplication(){
+
+    private val component = DaggerApplicationComponent
+                            .builder()
+                            .application(this)
+                            .build()
 
     override fun onCreate() {
         super.onCreate()
 
-        startKoin {
-            androidContext(this@MyApplication)
-            modules(networkModule)
-            modules(persistenceModule)
-            modules(viewModelModule)
-            modules(repositoryModule)
-        }
+    }
 
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return component
     }
 
 
